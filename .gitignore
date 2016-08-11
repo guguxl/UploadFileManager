@@ -1,0 +1,10 @@
+syntax: glob
+.gradle/
+.settings
+bin/
+build
+logs/
+work/Tomcat/localhost/ROOT
+*.orig
+*.bak
+.hg/
