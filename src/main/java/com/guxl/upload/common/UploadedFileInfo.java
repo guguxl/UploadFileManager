@@ -1,13 +1,16 @@
-package com.guxl.upload.service;
+package com.guxl.upload.common;
 
 import java.time.LocalDateTime;
 
-public class FileInfo {
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public class UploadedFileInfo {
 
 	String fileName;			//文件名
 	String fileType;			//文件类型(扩展名取lower)
-	String filePath;			//保存的文件路径
-	String urlPath;				//保存的文件的url访问路径，供后续下载使用
+	String filePath;			//保存的文件路径（含完整目录和文件名）
+	String urlPath;				//保存的文件的url访问路径（含完整的虚拟路径和文件名），供后续下载使用
 	Long   fileSize;			//文件大小(bytes)
 	LocalDateTime saveTime;		//文件保存时间
 	
@@ -73,7 +76,7 @@ public class FileInfo {
 	}
 
 
-	public FileInfo() {
+	public UploadedFileInfo() {
 	}
 	
 

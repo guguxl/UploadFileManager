@@ -1,4 +1,4 @@
-package com.guxl.upload.service;
+package com.guxl.upload.common.exception;
 
 public class FileSizeExceedLimitException extends Exception {
 
