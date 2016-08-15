@@ -1,4 +1,4 @@
-package com.guxl.upload.app;
+package com.guxl.upload.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,18 +9,20 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.guxl.upload.UploadApplication;
-import com.guxl.upload.common.FileSystemUtil;
-import com.guxl.upload.common.SimpleUploadManager;
+//import com.guxl.upload.UploadApplication;
 
 
 /**
- * 配置SimpleUploadManager对象的 java Config类。
+ * 配置SimpleUploadManager对象的 java Config类。该类读取application.properties文件中的配置项有：
+ * <br>upload.fsBasePath：上传文件存放的路径。如果无该配置项，则默认存放在项目目录下的uploaded子目录中。
+ * <br>upload.urlBasePath：上传文件存放路径所映射出的虚拟路径。如果无该配置项，则默认映射为/upload/。
+ * <br>upload.sizeLimit：限制上传文件的大小。如果无该配置项，则默认为10Mb。
  * @author xiangligu
  *
  */
 @Configuration
-@ComponentScan(basePackageClasses = {UploadApplication.class})
+@ComponentScan
+//@ComponentScan(basePackageClasses = {UploadApplication.class})
 public class UploadManagerConfiguration extends WebMvcConfigurerAdapter{
 	
 	@Autowired
