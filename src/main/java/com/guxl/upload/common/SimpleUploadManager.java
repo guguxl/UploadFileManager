@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 
 import com.google.common.base.Preconditions;
 
+import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.codec.Hex;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.guxl.upload.common.exception.FileSizeExceedLimitException;
@@ -175,7 +175,7 @@ public class SimpleUploadManager implements UploadManager {
 	private String generateSubDirRandomly(MultipartFile multipartFile) throws NoSuchAlgorithmException {
 		MessageDigest digest=MessageDigest.getInstance("MD5");
 		String randomSeedStr = LocalDateTime.now().toString() + multipartFile.getOriginalFilename() + multipartFile.getSize();
-		String subDir=new String(Hex.encode(digest.digest(randomSeedStr.getBytes()))).substring(0,2);
+		String subDir=new String(Hex.encodeHex(digest.digest(randomSeedStr.getBytes()))).substring(0,2);
 		return subDir;
 	}
 	
