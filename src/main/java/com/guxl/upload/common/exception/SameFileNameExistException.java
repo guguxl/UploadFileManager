@@ -1,6 +1,6 @@
 package com.guxl.upload.common.exception;
 
-public class SameFileNameExistException extends Exception {
+public class SameFileNameExistException extends RuntimeException {
 
 	static final long serialVersionUID = -1L;
 	

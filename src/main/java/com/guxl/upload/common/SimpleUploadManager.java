@@ -115,7 +115,7 @@ public class SimpleUploadManager implements UploadManager {
 	//==============save and remove implementation================
 	@Override
 	public UploadedFileInfo saveFile(MultipartFile multipartFile, String subDir, String newFileName, boolean overwrite)
-			throws SameFileNameExistException, FileSizeExceedLimitException, IOException, IllegalArgumentException {
+			throws IOException{
 		Preconditions.checkNotNull(multipartFile, "参数multipartFile不允许为null");
 		Preconditions.checkNotNull(subDir, "参数subDir不允许为null");
 		Preconditions.checkArgument(subDir.trim().length()>0, "参数subDir不允许为空格或空字符串");
@@ -156,7 +156,7 @@ public class SimpleUploadManager implements UploadManager {
 	
 	@Override
 	public UploadedFileInfo saveFile(MultipartFile multipartFile)
-			throws SameFileNameExistException, FileSizeExceedLimitException, NoSuchAlgorithmException, IOException, IllegalArgumentException {
+			throws NoSuchAlgorithmException, IOException{
 		String subDir=this.generateSubDirRandomly(multipartFile);
 		String newFileName=this.generateFileNameWithUuid();
 		return this.saveFile(multipartFile, subDir, newFileName, true);

@@ -41,7 +41,7 @@ public class FileSystemUtil {
 	 * @param fileName 不包含路径的文件名称
 	 * @return 文件扩展名
 	 */
-	public final static String getFileExtent(String fileName) throws IllegalArgumentException {
+	public final static String getFileExtent(String fileName){
 		Preconditions.checkNotNull(fileName,"参数fileName不允许为null");
 		Preconditions.checkArgument(fileName.trim().length()>0, "参数fileName不允许为空格或空字符串");
 		
@@ -57,7 +57,7 @@ public class FileSystemUtil {
 	 * @param windowsPath windows系统格式的路径
 	 * @return unix系统格式的路径
 	 */
-	public final static String convertWindowsPathToUnixPath(String windowsPath) throws IllegalArgumentException {
+	public final static String convertWindowsPathToUnixPath(String windowsPath){
 		Preconditions.checkNotNull(windowsPath,"参数windowsPath不允许为null");
 		return windowsPath.replace("\\", "/");
 	}
@@ -68,9 +68,8 @@ public class FileSystemUtil {
 	 * 将绝对路径参数进行格式化，主要是删除目录名称中包含的首尾空格，对于连续的多个路径分隔符（“/”或“\”）只当成一个处理，最后返回规范的绝对路径
 	 * @param fullPath 待处理的绝对路径
 	 * @return 处理后的绝对路径
-	 * @throws IllegalArgumentException
 	 */
-	public final static String getRegularFullPath(String fullPath) throws IllegalArgumentException {
+	public final static String getRegularFullPath(String fullPath){
 		ArrayList<String> pathPartList=FileSystemUtil.getFullPathParts(fullPath);
 		String pathSplitChar=FileSystemUtil.getPathSplitChar();
 		
@@ -88,9 +87,8 @@ public class FileSystemUtil {
 	 * 将映射的网络路径参数进行格式化，主要是删除路径名称中包含的首尾空格，对于连续的多个路径分隔符（“/”）只当成一个处理，最后返回规范的绝对虚拟路径
 	 * @param fullUrlPath 待处理的绝对的虚拟路径
 	 * @return 处理后的绝对虚拟路径
-	 * @throws IllegalArgumentException
 	 */
-	public final static String getRegularFullUrlPath(String fullUrlPath) throws IllegalArgumentException {
+	public final static String getRegularFullUrlPath(String fullUrlPath){
 		ArrayList<String> pathPartList=FileSystemUtil.getFullPathParts(fullUrlPath);
 		String tempStr=Joiner.on("/").skipNulls().join(pathPartList);
 		return "/" + tempStr + "/";
@@ -104,7 +102,7 @@ public class FileSystemUtil {
 	 * @param fullPathDir 待创建的（包含完整路径的）目录名称
 	 * @throws IOException
 	 */
-	public final static void createDirectoryIfNotExist(String fullPathDir) throws IOException, IllegalArgumentException {
+	public final static void createDirectoryIfNotExist(String fullPathDir) throws IOException{
 		Preconditions.checkNotNull(fullPathDir, "参数fullPathDir不允许为null");
 		Preconditions.checkArgument(fullPathDir.trim().length()>0, "参数fullPathDir不允许为空格或空字符串");
 		
@@ -120,7 +118,7 @@ public class FileSystemUtil {
 	 * @param fullPathDir 待创建的（包含完整路径的）目录名称
 	 * @throws IOException
 	 */
-	public final static void createDirectoryIfNotExistRecursively(String fullPathDir) throws IOException, IllegalArgumentException{
+	public final static void createDirectoryIfNotExistRecursively(String fullPathDir) throws IOException{
 		String pathSplitChar=FileSystemUtil.getPathSplitChar();
 		ArrayList<String> pathPartList=FileSystemUtil.getFullPathParts(fullPathDir);
 		
@@ -163,9 +161,8 @@ public class FileSystemUtil {
 	 * <p> 拆分过程中对于目录名称中包含的前后的空格进行删除，对于连续两个路径分隔符（“/”或“\”）也忽略处理，只当成一个路径分隔符
 	 * @param fullPath 待拆分的绝对路径
 	 * @return 拆分后的各级目录名称构成的数组列表
-	 * @throws IllegalArgumentException
 	 */
-	private final static ArrayList<String> getFullPathParts(String fullPath) throws IllegalArgumentException {
+	private final static ArrayList<String> getFullPathParts(String fullPath){
 		Preconditions.checkNotNull(fullPath, "参数fullPath不允许为null");
 		Preconditions.checkArgument(fullPath.trim().length()>0, "参数fullPath不允许为空格或空字符串");
 		

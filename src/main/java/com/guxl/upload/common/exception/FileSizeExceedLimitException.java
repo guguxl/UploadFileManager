@@ -1,6 +1,6 @@
 package com.guxl.upload.common.exception;
 
-public class FileSizeExceedLimitException extends Exception {
+public class FileSizeExceedLimitException extends RuntimeException {
 
 	static final long serialVersionUID = -1L;
 	

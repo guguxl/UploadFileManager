@@ -5,8 +5,6 @@ import java.security.NoSuchAlgorithmException;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.guxl.upload.common.exception.FileSizeExceedLimitException;
-import com.guxl.upload.common.exception.SameFileNameExistException;
 
 public interface UploadManager {
 	
@@ -63,7 +61,7 @@ public interface UploadManager {
 	 * @return 包含上传文件保存信息的UploadedFileInfo对象
 	 */
 	UploadedFileInfo saveFile(MultipartFile multipartFile, String subDir, String newFileName, boolean overwrite) 
-			throws SameFileNameExistException,FileSizeExceedLimitException,IOException,IllegalArgumentException;
+			throws IOException;
 	
 	
 	/**
@@ -75,7 +73,7 @@ public interface UploadManager {
 	 * @return 包含上传文件保存信息的UploadedFileInfo对象
 	 */
 	default UploadedFileInfo saveFile(MultipartFile multipartFile, String subDir, String newFileName) 
-			throws SameFileNameExistException,FileSizeExceedLimitException,IOException,IllegalArgumentException {
+			throws IOException{
 		return this.saveFile(multipartFile, subDir, newFileName, true);
 	}
 	
@@ -87,7 +85,7 @@ public interface UploadManager {
 	 * @return 包含上传文件保存信息的UploadedFileInfo对象
 	 */
 	UploadedFileInfo saveFile(MultipartFile multipartFile) 
-			throws SameFileNameExistException,FileSizeExceedLimitException,NoSuchAlgorithmException,IOException,IllegalArgumentException;
+			throws NoSuchAlgorithmException,IOException;
 	
 	
 	

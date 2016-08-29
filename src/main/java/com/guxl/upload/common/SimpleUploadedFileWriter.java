@@ -20,7 +20,7 @@ public class SimpleUploadedFileWriter implements UploadedFileWriter {
 	
 	@Override
 	public void writeFile(MultipartFile multipartFile, String pathFileName, boolean overwrite)
-			throws SameFileNameExistException, IOException, IllegalArgumentException {
+			throws IOException{
 		Preconditions.checkNotNull(multipartFile, "参数multipartFile不允许为null");
 		Preconditions.checkNotNull(pathFileName, "参数pathFileName不允许为null");
 		Preconditions.checkArgument(pathFileName.trim().length()>0, "参数pathFileName不允许为空格或空字符串");
